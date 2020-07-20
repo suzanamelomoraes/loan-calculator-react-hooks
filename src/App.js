@@ -1,9 +1,10 @@
 import React from 'react';
 import Calculator from './components/calculator';
+import './App.css';
 
 function App() {
   return (
-    <div>
+    <div className='container'>
       <h1>Loan Calculator</h1>
       <Calculator />
     </div>
