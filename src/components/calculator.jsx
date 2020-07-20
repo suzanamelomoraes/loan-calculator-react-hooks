@@ -8,6 +8,10 @@ function Calculator() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!amount || !interest || !year) return;
+    calculateResults(amount, interest, year);
+    setAmount('');
+    setInterest('');
+    setYear('');
   };
 
   console.log(amount);
