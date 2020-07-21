@@ -4,9 +4,11 @@ import './App.css';
 
 function App() {
   return (
-    <div className='container'>
-      <h1>Loan Calculator</h1>
-      <Calculator />
+    <div className='calculator'>
+      <div className='container'>
+        <h1>Loan Calculator</h1>
+        <Calculator />
+      </div>
     </div>
   );
 }
