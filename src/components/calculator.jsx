@@ -46,27 +46,31 @@ function Calculator() {
 
   return (
     <div>
-      <form>
-        <input
-          type='number'
-          value={amount}
-          placeholder='amount'
-          onChange={(e) => setAmount(e.target.value)}
-        />
-        <input
-          type='number'
-          value={interest}
-          placeholder='interest'
-          onChange={(e) => setInterest(e.target.value)}
-        />
-        <input
-          type='number'
-          value={year}
-          placeholder='year'
-          onChange={(e) => setYear(e.target.value)}
-        />
+      <form className='myform'>
+        <div className='form-items'>
+          <input
+            type='number'
+            value={amount}
+            placeholder='Total amount'
+            onChange={(e) => setAmount(e.target.value)}
+          />
+          <input
+            type='number'
+            value={interest}
+            placeholder='Interest'
+            onChange={(e) => setInterest(e.target.value)}
+          />
+          <input
+            type='number'
+            value={year}
+            placeholder='Years to pay'
+            onChange={(e) => setYear(e.target.value)}
+          />
+        </div>
+
+        <button onClick={handleSubmit}>Submit</button>
       </form>
-      <button onClick={handleSubmit}>Submit</button>
+
       <div>
         <p>Monthly Payment: {monthlyPayment}</p>
         <p>Total Payment: {totalPayment}</p>
