@@ -31,7 +31,9 @@ body {
 }
 
 input {
-  margin: 3px;
+  display: block;
+  width: 95%;
+  margin: 3px 0;
   border-radius: 4px;
   border-color: lightgray;
 }
