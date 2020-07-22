@@ -37,35 +37,39 @@ function Calculator() {
     }
   };
 
-  console.log(amount);
-  console.log(interest);
-  console.log(year);
-  console.log(monthlyPayment);
-  console.log(totalPayment);
-  console.log(totalInterest);
-
   return (
     <div>
       <form className='myform'>
         <div className='form-items'>
-          <input
-            type='number'
-            value={amount}
-            placeholder='Total amount'
-            onChange={(e) => setAmount(e.target.value)}
-          />
-          <input
-            type='number'
-            value={interest}
-            placeholder='Interest'
-            onChange={(e) => setInterest(e.target.value)}
-          />
-          <input
-            type='number'
-            value={year}
-            placeholder='Years to pay'
-            onChange={(e) => setYear(e.target.value)}
-          />
+          <label>
+            Amount:
+            <input
+              type='number'
+              value={amount}
+              placeholder='Total amount'
+              onChange={(e) => setAmount(e.target.value)}
+            />
+          </label>
+          <label>
+            {' '}
+            Interest:
+            <input
+              type='number'
+              value={interest}
+              placeholder='Interest'
+              onChange={(e) => setInterest(e.target.value)}
+            />
+          </label>
+          <label>
+            {' '}
+            Years:
+            <input
+              type='number'
+              value={year}
+              placeholder='Years to repay'
+              onChange={(e) => setYear(e.target.value)}
+            />
+          </label>
         </div>
 
         <button onClick={handleSubmit}>Submit</button>
