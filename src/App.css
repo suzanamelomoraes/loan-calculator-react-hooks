@@ -54,8 +54,20 @@ p {
   background-color: black;
   color: white;
   border: none;
+  margin-top: 10px;
 }
 
 .submit:hover {
+  opacity: 0.8;
+}
+
+.clear-field {
+  background-color: black;
+  color: white;
+  border: none;
+  margin-top: 10px;
+}
+
+.clear-field:hover {
   opacity: 0.8;
 }
