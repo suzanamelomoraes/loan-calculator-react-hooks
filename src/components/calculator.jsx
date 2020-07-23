@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 function Calculator() {
-  const { register, handleSubmit, errors, reset } = useForm();
+  const { register, handleSubmit, errors } = useForm();
   const [results, setResults] = useState({
     monthlyPayment: '',
     totalPayment: '',
@@ -34,6 +34,14 @@ function Calculator() {
       newResults.totalInterest = initialTotalInterest;
       setResults(newResults);
     }
+  };
+
+  const clearFields = () => {
+    const newResults = { ...results };
+    newResults.monthlyPayment = '';
+    newResults.totalPayment = '';
+    newResults.totalInterest = '';
+    setResults(newResults);
   };
 
   return (
@@ -91,7 +99,7 @@ function Calculator() {
         </div>
       </form>
 
-      <div>
+      <div className='myform' >
         <h4>Results:</h4>
         <label>Monthly Payment:</label>
         <input type='text' value={results.monthlyPayment} disabled />
@@ -99,6 +107,12 @@ function Calculator() {
         <input type='text' value={results.totalPayment} disabled />
         <label>Total Interest:</label>
         <input type='text' value={results.totalInterest} disabled />
+        <input
+          className='clear-field'
+          value='Reset fields'
+          type='button'
+          onClick={() => clearFields()}
+        />
       </div>
     </div>
   );
