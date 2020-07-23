@@ -12,6 +12,13 @@ input {
 
 label {
   font-size: 12px;
+  text-align: left;
+}
+
+p {
+  color: red;
+  font-size: 10px;
+  text-align: left;
 }
 
 .calculator {
