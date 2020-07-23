@@ -2,14 +2,17 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 function Calculator() {
-  const { register, handleSubmit, errors } = useForm();
+  const { register, handleSubmit, errors, reset } = useForm();
   const [results, setResults] = useState({
     monthlyPayment: '',
     totalPayment: '',
     totalInterest: '',
   });
 
-  const onSubmit = (data) => calculateResults(data);
+  const onSubmit = (data, e) => {
+    calculateResults(data);
+    e.target.reset();
+  };
 
   const calculateResults = ({ amount, interest, years }) => {
     const initialAmount = parseFloat(amount),
