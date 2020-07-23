@@ -3,6 +3,13 @@ import { useForm } from 'react-hook-form';
 
 function Calculator() {
   const { register, handleSubmit } = useForm();
+  const [results, setResults] = useState({
+    results: {
+      monthlyPayment: '',
+      totalPayment: '',
+      totalInterest: '',
+    },
+  });
 
   const onSubmit = (data) => console.log(data);
 
