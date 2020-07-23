@@ -4,21 +4,12 @@ import { useForm } from 'react-hook-form';
 function Calculator() {
   const { register, handleSubmit } = useForm();
   const [results, setResults] = useState({
-    results: {
-      monthlyPayment: '',
-      totalPayment: '',
-      totalInterest: '',
-    },
+    monthlyPayment: '',
+    totalPayment: '',
+    totalInterest: '',
   });
 
-  const onSubmit = (data) => console.log(data);
-
-  //   const [amount, setAmount] = useState('');
-  //   const [interest, setInterest] = useState('');
-  //   const [year, setYear] = useState('');
-  //   const [monthlyPayment, setMonthlyPayment] = useState('');
-  //   const [totalPayment, setTotalPayment] = useState('');
-  //   const [totalInterest, setTotalInterest] = useState('');
+  const onSubmit = (data) => calculateResults(data);
 
   //   const handleSubmit = (e) => {
   //     e.preventDefault();
@@ -29,25 +20,28 @@ function Calculator() {
   //     setYear('');
   //   };
 
-  //   const calculateResults = (amount, interest, year) => {
-  //     const initialAmount = amount,
-  //       calculatedinterest = interest / 100 / 12,
-  //       calculatedPayments = year * 12,
-  //       x = Math.pow(1 + calculatedinterest, calculatedPayments),
-  //       monthly = (initialAmount * x * calculatedinterest) / (x - 1);
+  const calculateResults = ({ amount, interest, year }) => {
+    const initialAmount = amount,
+      calculatedinterest = interest / 100 / 12,
+      calculatedPayments = year * 12,
+      x = Math.pow(1 + calculatedinterest, calculatedPayments),
+      monthly = (initialAmount * x * calculatedinterest) / (x - 1);
 
-  //     if (isFinite(monthly)) {
-  //       const initialMonthlyPayment = monthly.toFixed(2),
-  //         initialTotalPayment = (monthly * calculatedPayments).toFixed(2),
-  //         initialTotalInterest = (
-  //           monthly * calculatedPayments -
-  //           initialAmount
-  //         ).toFixed(2);
-  //       setMonthlyPayment(initialMonthlyPayment);
-  //       setTotalPayment(initialTotalPayment);
-  //       setTotalInterest(initialTotalInterest);
-  //     }
-  //   };
+    if (isFinite(monthly)) {
+      const initialMonthlyPayment = monthly.toFixed(2),
+        initialTotalPayment = (monthly * calculatedPayments).toFixed(2),
+        initialTotalInterest = (
+          monthly * calculatedPayments -
+          initialAmount
+        ).toFixed(2);
+      const newResults = { ...results };
+      results.monthlyPayment = initialMonthlyPayment;
+      results.totalPayment = initialTotalPayment;
+      results.totalInterest = initialTotalInterest;
+      setResults({ newResults });
+      console.log(results);
+    }
+  };
 
   return (
     <div>
