@@ -75,9 +75,13 @@ function Calculator() {
       </form>
 
       <div>
-        <p>Monthly Payment: {results.monthlyPayment}</p>
-        <p>Total Payment: {results.totalPayment}</p>
-        <p>Total Interest: {results.totalInterest}</p>
+        <h4>Results:</h4>
+        <label>Monthly Payment:</label>
+        <input type='text' value={results.monthlyPayment} disabled />
+        <label>Total Payment: </label>
+        <input type='text' value={results.totalPayment} disabled />
+        <label>Total Interest:</label>
+        <input type='text' value={results.totalInterest} disabled />
       </div>
     </div>
   );
