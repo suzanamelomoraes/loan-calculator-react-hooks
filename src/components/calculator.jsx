@@ -49,10 +49,33 @@ function Calculator() {
           <input
             type='number'
             name='amount'
-            ref={register({ required: true })}
+            ref={register({
+              required: true,
+              validate: {
+                positive: (value) => parseInt(value, 10) > 0,
+              },
+            })}
           />
-          <input type='number' name='interest' ref={register({ required: true })} />
-          <input type='number' name='year' ref={register({ required: true })} />
+          <input
+            type='number'
+            name='interest'
+            ref={register({
+              required: true,
+              validate: {
+                positive: (value) => parseInt(value, 10) > 0,
+              },
+            })}
+          />
+          <input
+            type='number'
+            name='year'
+            ref={register({
+              required: true,
+              validate: {
+                positive: (value) => parseInt(value, 10) > 0,
+              },
+            })}
+          />
           <input type='submit' className='submit' />
         </div>
       </form>
