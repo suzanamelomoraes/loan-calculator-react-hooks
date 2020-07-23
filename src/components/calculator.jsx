@@ -47,9 +47,11 @@ function Calculator() {
     <div>
       <form className='myform' onSubmit={handleSubmit(onSubmit)}>
         <div className='form-items'>
+          <label>Amount:</label>
           <input
             type='number'
             name='amount'
+            placeholder='Total amount'
             ref={register({
               required: true,
               validate: {
@@ -57,9 +59,11 @@ function Calculator() {
               },
             })}
           />
+          <label>Interest:</label>
           <input
             type='number'
             name='interest'
+            placeholder='Interest'
             ref={register({
               required: true,
               validate: {
@@ -67,9 +71,11 @@ function Calculator() {
               },
             })}
           />
+          <label>Years:</label>
           <input
             type='number'
             name='year'
+            placeholder='Years to repay'
             ref={register({
               required: true,
               validate: {
@@ -81,44 +87,11 @@ function Calculator() {
         </div>
       </form>
 
-      {/* // <div>
-    //   <form className='myform' onSubmit={handleSubmit}>
-    //     <div className='form-items'>
-    //       <label>Amount:</label>
-    //       <input */}
-      {/* //         type='number'
-    //         value={amount}
-    //         placeholder='Total amount'
-    //         onChange={(e) => setAmount(e.target.value)}
-    //       />
-
-    //       <label> Interest:</label>
-    //       <input */}
-      {/* //         type='number'
-    //         value={interest}
-    //         placeholder='Interest'
-    //         onChange={(e) => setInterest(e.target.value)}
-    //       />
-
-    //       <label> Years:</label>
-    //       <input */}
-      {/* //         type='number'
-    //         value={year}
-    //         placeholder='Years to repay'
-    //         onChange={(e) => setYear(e.target.value)}
-    //       />
-    //     </div> */}
-
-      {/* //     <input type='submit' value='Submit' className='submit' />
-    //   </form> */}
-
-      {/* //   <div>
-    //     <p>Monthly Payment: {monthlyPayment}</p>
-    //     <p>Total Payment: {totalPayment}</p>
-    //     <p>Total Interest: {totalInterest}</p>
-    //   </div>
-
-    </div> */}
+      <div>
+        <p>Monthly Payment: {results.monthlyPayment}</p>
+        <p>Total Payment: {results.totalPayment}</p>
+        <p>Total Interest: {results.totalInterest}</p>
+      </div>
     </div>
   );
 }
