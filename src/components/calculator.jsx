@@ -11,19 +11,10 @@ function Calculator() {
 
   const onSubmit = (data) => calculateResults(data);
 
-  //   const handleSubmit = (e) => {
-  //     e.preventDefault();
-  //     if (!amount || !interest || !year) return;
-  //     calculateResults(amount, interest, year);
-  //     setAmount('');
-  //     setInterest('');
-  //     setYear('');
-  //   };
-
   const calculateResults = ({ amount, interest, year }) => {
-    const initialAmount = amount,
-      calculatedinterest = interest / 100 / 12,
-      calculatedPayments = year * 12,
+    const initialAmount = parseFloat(amount),
+      calculatedinterest = parseFloat(interest) / 100 / 12,
+      calculatedPayments = parseFloat(year) * 12,
       x = Math.pow(1 + calculatedinterest, calculatedPayments),
       monthly = (initialAmount * x * calculatedinterest) / (x - 1);
 
@@ -35,11 +26,10 @@ function Calculator() {
           initialAmount
         ).toFixed(2);
       const newResults = { ...results };
-      results.monthlyPayment = initialMonthlyPayment;
-      results.totalPayment = initialTotalPayment;
-      results.totalInterest = initialTotalInterest;
-      setResults({ newResults });
-      console.log(results);
+      newResults.monthlyPayment = initialMonthlyPayment;
+      newResults.totalPayment = initialTotalPayment;
+      newResults.totalInterest = initialTotalInterest;
+      setResults(newResults);
     }
   };
 
@@ -49,31 +39,28 @@ function Calculator() {
         <div className='form-items'>
           <label>Amount:</label>
           <input
-            type='number'
             name='amount'
-            placeholder='Total amount'
+            placeholder='Loan amount'
             ref={register({
               required: true,
               validate: {
-                positive: (value) => parseInt(value, 10) > 0,
+                positive: (value) => parseFloat(value, 10) > 0,
               },
             })}
           />
           <label>Interest:</label>
           <input
-            type='number'
             name='interest'
             placeholder='Interest'
             ref={register({
               required: true,
               validate: {
-                positive: (value) => parseInt(value, 10) > 0,
+                positive: (value) => parseFloat(value, 10) > 0,
               },
             })}
           />
           <label>Years:</label>
           <input
-            type='number'
             name='year'
             placeholder='Years to repay'
             ref={register({
