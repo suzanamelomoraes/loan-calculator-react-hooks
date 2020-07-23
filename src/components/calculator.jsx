@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 function Calculator() {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, errors } = useForm();
   const [results, setResults] = useState({
     monthlyPayment: '',
     totalPayment: '',
@@ -11,10 +11,10 @@ function Calculator() {
 
   const onSubmit = (data) => calculateResults(data);
 
-  const calculateResults = ({ amount, interest, year }) => {
+  const calculateResults = ({ amount, interest, years }) => {
     const initialAmount = parseFloat(amount),
       calculatedinterest = parseFloat(interest) / 100 / 12,
-      calculatedPayments = parseFloat(year) * 12,
+      calculatedPayments = parseFloat(years) * 12,
       x = Math.pow(1 + calculatedinterest, calculatedPayments),
       monthly = (initialAmount * x * calculatedinterest) / (x - 1);
 
@@ -48,6 +48,10 @@ function Calculator() {
               },
             })}
           />
+          {errors.amount?.type === 'required' && <p>Your input is required</p>}
+          {errors.amount?.type === 'positive' && (
+            <p>Please give a valid positive number</p>
+          )}
           <label>Interest:</label>
           <input
             name='interest'
@@ -59,9 +63,15 @@ function Calculator() {
               },
             })}
           />
+          {errors.interest?.type === 'required' && (
+            <p>Your input is required</p>
+          )}
+          {errors.interest?.type === 'positive' && (
+            <p>Please give a valid positive number</p>
+          )}
           <label>Years:</label>
           <input
-            name='year'
+            name='years'
             placeholder='Years to repay'
             ref={register({
               required: true,
@@ -70,6 +80,10 @@ function Calculator() {
               },
             })}
           />
+          {errors.years?.type === 'required' && <p>Your input is required</p>}
+          {errors.years?.type === 'positive' && (
+            <p>Please give a valid positive number</p>
+          )}
           <input type='submit' className='submit' />
         </div>
       </form>
