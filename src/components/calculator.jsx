@@ -7,6 +7,7 @@ function Calculator() {
     monthlyPayment: '',
     totalPayment: '',
     totalInterest: '',
+    isResult: false,
   });
 
   const onSubmit = (data, e) => {
@@ -32,6 +33,7 @@ function Calculator() {
       newResults.monthlyPayment = initialMonthlyPayment;
       newResults.totalPayment = initialTotalPayment;
       newResults.totalInterest = initialTotalInterest;
+      newResults.isResult = true;
       setResults(newResults);
     }
   };
@@ -41,6 +43,7 @@ function Calculator() {
     newResults.monthlyPayment = '';
     newResults.totalPayment = '';
     newResults.totalInterest = '';
+    newResults.isResult = false;
     setResults(newResults);
   };
 
@@ -99,21 +102,23 @@ function Calculator() {
         </div>
       </form>
 
-      <div className='myform' >
-        <h4>Results:</h4>
-        <label>Monthly Payment:</label>
-        <input type='text' value={results.monthlyPayment} disabled />
-        <label>Total Payment: </label>
-        <input type='text' value={results.totalPayment} disabled />
-        <label>Total Interest:</label>
-        <input type='text' value={results.totalInterest} disabled />
-        <input
-          className='clear-field'
-          value='Reset fields'
-          type='button'
-          onClick={() => clearFields()}
-        />
-      </div>
+      {results.isResult && (
+        <div className='myform'>
+          <h4>Results:</h4>
+          <label>Monthly Payment:</label>
+          <input type='text' value={results.monthlyPayment} disabled />
+          <label>Total Payment: </label>
+          <input type='text' value={results.totalPayment} disabled />
+          <label>Total Interest:</label>
+          <input type='text' value={results.totalInterest} disabled />
+          <input
+            className='clear-field'
+            value='Reset fields'
+            type='button'
+            onClick={() => clearFields()}
+          />
+        </div>
+      )}
     </div>
   );
 }
