@@ -10,11 +10,6 @@ input {
   border-color: lightgray;
 }
 
-label {
-  font-size: 12px;
-  text-align: left;
-}
-
 p {
   color: red;
   font-size: 10px;
@@ -70,4 +65,9 @@ p {
 
 .clear-field:hover {
   opacity: 0.8;
+}
+
+#mylabel {
+  font-size: 12px;
+  text-align: left;
 }

@@ -51,7 +51,7 @@ function Calculator() {
     <div>
       <form className='myform' onSubmit={handleSubmit(onSubmit)}>
         <div className='form-items'>
-          <label>Amount:</label>
+          <label id='mylabel'>Amount:</label>
           <input
             name='amount'
             placeholder='Loan amount'
@@ -66,7 +66,7 @@ function Calculator() {
           {errors.amount?.type === 'positive' && (
             <p>Please give a valid positive number</p>
           )}
-          <label>Interest:</label>
+          <label id='mylabel'>Interest:</label>
           <input
             name='interest'
             placeholder='Interest'
@@ -83,7 +83,7 @@ function Calculator() {
           {errors.interest?.type === 'positive' && (
             <p>Please give a valid positive number</p>
           )}
-          <label>Years:</label>
+          <label id='mylabel'>Years:</label>
           <input
             name='years'
             placeholder='Years to repay'
@@ -105,11 +105,11 @@ function Calculator() {
       {results.isResult && (
         <div className='myform'>
           <h4>Results:</h4>
-          <label>Monthly Payment:</label>
+          <label id='mylabel'>Monthly Payment:</label>
           <input type='text' value={results.monthlyPayment} disabled />
-          <label>Total Payment: </label>
+          <label id='mylabel'>Total Payment: </label>
           <input type='text' value={results.totalPayment} disabled />
-          <label>Total Interest:</label>
+          <label id='mylabel'>Total Interest:</label>
           <input type='text' value={results.totalInterest} disabled />
           <input
             className='clear-field'
