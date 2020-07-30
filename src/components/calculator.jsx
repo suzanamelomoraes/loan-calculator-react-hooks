@@ -51,74 +51,90 @@ function Calculator() {
     <div>
       <form className='myform' onSubmit={handleSubmit(onSubmit)}>
         <div className='form-items'>
-          <label id='mylabel'>Amount:</label>
-          <input
-            name='amount'
-            placeholder='Loan amount'
-            ref={register({
-              required: true,
-              validate: {
-                positive: (value) => parseFloat(value, 10) > 0,
-              },
-            })}
-          />
-          {errors.amount?.type === 'required' && <p>Your input is required</p>}
-          {errors.amount?.type === 'positive' && (
-            <p>Please give a valid positive number</p>
-          )}
-          <label id='mylabel'>Interest:</label>
-          <input
-            name='interest'
-            placeholder='Interest'
-            ref={register({
-              required: true,
-              validate: {
-                positive: (value) => parseFloat(value, 10) > 0,
-              },
-            })}
-          />
-          {errors.interest?.type === 'required' && (
-            <p>Your input is required</p>
-          )}
-          {errors.interest?.type === 'positive' && (
-            <p>Please give a valid positive number</p>
-          )}
-          <label id='mylabel'>Years:</label>
-          <input
-            name='years'
-            placeholder='Years to repay'
-            ref={register({
-              required: true,
-              validate: {
-                positive: (value) => parseInt(value, 10) > 0,
-              },
-            })}
-          />
-          {errors.years?.type === 'required' && <p>Your input is required</p>}
-          {errors.years?.type === 'positive' && (
-            <p>Please give a valid positive number</p>
-          )}
+          <div>
+            <label id='mylabel'>Amount:</label>
+            <input
+              name='amount'
+              placeholder='Loan amount'
+              ref={register({
+                required: true,
+                validate: {
+                  positive: (value) => parseFloat(value, 10) > 0,
+                },
+              })}
+            />
+            {errors.amount?.type === 'required' && (
+              <p>Your input is required</p>
+            )}
+            {errors.amount?.type === 'positive' && (
+              <p>Please give a valid positive number</p>
+            )}
+          </div>
+          <div>
+            <label id='mylabel'>Interest:</label>
+            <input
+              name='interest'
+              placeholder='Interest'
+              ref={register({
+                required: true,
+                validate: {
+                  positive: (value) => parseFloat(value, 10) > 0,
+                },
+              })}
+            />
+            {errors.interest?.type === 'required' && (
+              <p>Your input is required</p>
+            )}
+            {errors.interest?.type === 'positive' && (
+              <p>Please give a valid positive number</p>
+            )}
+          </div>
+          <div>
+            <label id='mylabel'>Years:</label>
+            <input
+              name='years'
+              placeholder='Years to repay'
+              ref={register({
+                required: true,
+                validate: {
+                  positive: (value) => parseInt(value, 10) > 0,
+                },
+              })}
+            />
+            {errors.years?.type === 'required' && <p>Your input is required</p>}
+            {errors.years?.type === 'positive' && (
+              <p>Please give a valid positive number</p>
+            )}
+          </div>
+
           <input type='submit' className='submit' />
         </div>
-      </form>
 
-      {results.isResult && (
-        <div className='myform'>
-          <h4>Results:</h4>
-          <label id='mylabel'>Monthly Payment:</label>
-          <input type='text' value={results.monthlyPayment} disabled />
-          <label id='mylabel'>Total Payment: </label>
-          <input type='text' value={results.totalPayment} disabled />
-          <label id='mylabel'>Total Interest:</label>
-          <input type='text' value={results.totalInterest} disabled />
-          <input
-            className='clear-field'
-            value='Reset fields'
-            type='button'
-            onClick={() => clearFields()}
-          />
-        </div>
-      )}
+        {results.isResult && (
+          <div className='form-items'>
+            <h4>Results:</h4>
+            <div>
+              <label id='mylabel'>Monthly Payment:</label>
+              <input type='text' value={results.monthlyPayment} disabled />
+            </div>
+            <div>
+              <label id='mylabel'>Total Payment: </label>
+              <input type='text' value={results.totalPayment} disabled />
+            </div>
+            <div>
+              <label id='mylabel'>Total Interest:</label>
+              <input type='text' value={results.totalInterest} disabled />
+            </div>
+
+            <input
+              className='clear-field'
+              value='Reset fields'
+              type='button'
+              onClick={() => clearFields()}
+            />
+          </div>
+        )}
+      </form>
     </div>
   );
 }
