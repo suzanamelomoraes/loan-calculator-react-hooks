@@ -128,7 +128,7 @@ function Calculator() {
 
             <input
               className='clear-field'
-              value='Reset fields'
+              value='Calculate again'
               type='button'
               onClick={() => clearFields()}
             />
