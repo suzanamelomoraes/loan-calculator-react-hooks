@@ -35,8 +35,13 @@ function Calculator() {
       newResults.totalPayment = initialTotalPayment;
       newResults.totalInterest = initialTotalInterest;
       newResults.isResult = true;
-      newResults.initialData = `Is your loan amount is $ ${amount}, with interest of ${interest}%, to be repaid in
-      ${years} years. The results are:`;
+      newResults.initialData = (
+        <h4>
+          {' '}
+          Loan amount: ${amount} <br /> Interest: {interest}% <br /> Years to
+          repay: {years}{' '}
+        </h4>
+      );
       setResults(newResults);
     }
     return;
@@ -120,7 +125,7 @@ function Calculator() {
 
         {results.isResult && (
           <div className='form-items'>
-            <h4>{results.initialData}</h4>
+            {results.initialData}
             <div>
               <label id='mylabel'>Monthly Payment:</label>
               <input type='text' value={results.monthlyPayment} disabled />
