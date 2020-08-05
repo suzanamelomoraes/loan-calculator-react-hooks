@@ -16,6 +16,10 @@ p {
   text-align: left;
 }
 
+h4 {
+    color:#555;
+}
+
 .calculator {
   display: flex;
   align-items: center;
@@ -49,7 +53,8 @@ p {
   background-color: black;
   color: white;
   border: none;
-  margin-top: 10px;
+  margin: 10px 0;
+  cursor: pointer;
 }
 
 .submit:hover {
