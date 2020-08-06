@@ -1,13 +1,16 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 import { render } from '@testing-library/react';
 import App from './App';
+import 'mutationobserver-shim';
 
-
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<h1>Loan Calculator</h1>, div);
+describe('App', () => {
+  test('renders App component', () => {
+    render(<App />);
+  });
 });
+
+// Initial test included in the template by react-create-app
 
 // test('renders learn react link', () => {
 //   const { getByText } = render(<App />);
