@@ -132,7 +132,7 @@ function Calculator() {
                 <p>Please give a valid positive number</p>
               )}
             </div>
-            <input type='submit' className='submit' />
+            <input type='submit' className='button' />
           </div>
         )}
         {/* Display the results to the user */}
@@ -154,7 +154,7 @@ function Calculator() {
 
             {/* Button to clear the fields */}
             <input
-              className='clear-field'
+              className='button'
               value='Calculate again'
               type='button'
               onClick={() => clearFields()}
