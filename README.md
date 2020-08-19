@@ -12,7 +12,7 @@ Please, feel free to contribute with comments, issues or pull requests.
 
 ### Technologies:
 
-- React (Hooks)
+- React (Hooks) + React Hook-form library
 - CSS
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
