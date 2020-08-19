@@ -2,7 +2,14 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 function Calculator() {
+  // Initialise the hook
+  // Register your input into the hook by invoking the 'register' function
+  // Handle-Submit will validate your input before invoking 'onSubmit'
+  // Errors is an object provided by Hook Form you can use to show errors while validating inputs
+
   const { register, handleSubmit, errors } = useForm();
+
+  // state to
   const [results, setResults] = useState({
     monthlyPayment: '',
     totalPayment: '',
@@ -11,11 +18,13 @@ function Calculator() {
     initialData: '',
   });
 
+  // Hook-form registered fields returns a object with key(name): value
   const onSubmit = (data, e) => {
     calculateResults(data);
     e.target.reset();
   };
 
+  // Calculation
   const calculateResults = ({ amount, interest, years }) => {
     const initialAmount = parseFloat(amount),
       calculatedinterest = parseFloat(interest) / 100 / 12,
@@ -30,6 +39,7 @@ function Calculator() {
           monthly * calculatedPayments -
           initialAmount
         ).toFixed(2);
+      // Set up results to the state
       const newResults = { ...results };
       newResults.monthlyPayment = initialMonthlyPayment;
       newResults.totalPayment = initialTotalPayment;
@@ -47,6 +57,7 @@ function Calculator() {
     return;
   };
 
+  // Clear input fields
   const clearFields = () => {
     const newResults = { ...results };
     newResults.monthlyPayment = '';
@@ -55,6 +66,8 @@ function Calculator() {
     newResults.isResult = false;
     setResults(newResults);
   };
+
+  // Each field is required to have a unique name, which will be the key for the registration process
 
   return (
     <div>
@@ -66,6 +79,7 @@ function Calculator() {
               <input
                 name='amount'
                 placeholder='Loan amount'
+                // Include your validation as an object argument of register method)
                 ref={register({
                   required: true,
                   validate: {
@@ -73,6 +87,7 @@ function Calculator() {
                   },
                 })}
               />
+              {/* Errors will return when field validation fails. If you have more than one validation type specify the type */}
               {errors.amount?.type === 'required' && (
                 <p>Your input is required</p>
               )}
