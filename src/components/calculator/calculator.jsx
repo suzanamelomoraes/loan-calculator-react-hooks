@@ -9,7 +9,7 @@ function Calculator() {
 
   const { register, handleSubmit, errors } = useForm();
 
-  // state to
+  // state to storage the results of the calculation
   const [results, setResults] = useState({
     monthlyPayment: '',
     totalPayment: '',
