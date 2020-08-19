@@ -48,7 +48,7 @@ h4 {
   margin-bottom: 3px;
 }
 
-.submit {
+.button {
   background-color: black;
   color: white;
   border: none;
@@ -57,18 +57,7 @@ h4 {
   cursor: pointer;
 }
 
-.submit:hover {
-  opacity: 0.8;
-}
-
-.clear-field {
-  background-color: black;
-  color: white;
-  border: none;
-  margin-top: 10px;
-}
-
-.clear-field:hover {
+.button:hover {
   opacity: 0.8;
 }
 
