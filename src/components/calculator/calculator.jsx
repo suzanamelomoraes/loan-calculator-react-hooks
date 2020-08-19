@@ -11,11 +11,11 @@ function Calculator() {
 
   // state to storage the results of the calculation
   const [results, setResults] = useState({
-    monthlyPayment: '',
-    totalPayment: '',
-    totalInterest: '',
+    monthlyPaymentUI: '',
+    totalPaymentUI: '',
+    totalInterestUI: '',
     isResult: false,
-    initialData: '',
+    userInitialData: '',
   });
 
   // Hook-form registered fields returns a object with key(name): value
@@ -26,26 +26,24 @@ function Calculator() {
 
   // Calculation
   const calculateResults = ({ amount, interest, years }) => {
-    const initialAmount = parseFloat(amount),
-      calculatedinterest = parseFloat(interest) / 100 / 12,
+    const userAmount = parseFloat(amount),
+      calculatedInterest = parseFloat(interest) / 100 / 12,
       calculatedPayments = parseFloat(years) * 12,
-      x = Math.pow(1 + calculatedinterest, calculatedPayments),
-      monthly = (initialAmount * x * calculatedinterest) / (x - 1);
+      x = Math.pow(1 + calculatedInterest, calculatedPayments),
+      monthly = (userAmount * x * calculatedInterest) / (x - 1);
 
     if (isFinite(monthly)) {
-      const initialMonthlyPayment = monthly.toFixed(2),
-        initialTotalPayment = (monthly * calculatedPayments).toFixed(2),
-        initialTotalInterest = (
-          monthly * calculatedPayments -
-          initialAmount
-        ).toFixed(2);
+      const monthlyPayment = monthly.toFixed(2),
+        totalPayment = (monthly * calculatedPayments).toFixed(2),
+        totalInterest = (monthly * calculatedPayments - userAmount).toFixed(2);
+
       // Set up results to the state
       const newResults = { ...results };
-      newResults.monthlyPayment = initialMonthlyPayment;
-      newResults.totalPayment = initialTotalPayment;
-      newResults.totalInterest = initialTotalInterest;
+      newResults.monthlyPaymentUI = monthlyPayment;
+      newResults.totalPaymentUI = totalPayment;
+      newResults.totalInterestUI = totalInterest;
       newResults.isResult = true;
-      newResults.initialData = (
+      newResults.userInitialData = (
         <h4>
           {' '}
           Loan amount: ${amount} <br /> Interest: {interest}% <br /> Years to
@@ -60,13 +58,14 @@ function Calculator() {
   // Clear input fields
   const clearFields = () => {
     const newResults = { ...results };
-    newResults.monthlyPayment = '';
-    newResults.totalPayment = '';
-    newResults.totalInterest = '';
+    newResults.monthlyPaymentUI = '';
+    newResults.totalPaymentUI = '';
+    newResults.totalInterestUI = '';
     newResults.isResult = false;
     setResults(newResults);
   };
 
+  //HOOK-FORM
   // Each field is required to have a unique name, which will be the key for the registration process
 
   return (
@@ -87,7 +86,7 @@ function Calculator() {
                   },
                 })}
               />
-              {/* Errors will return when field validation fails. If you have more than one validation type specify the type */}
+              {/* Errors will return when field validation fails. If you have more than one validation type, specify the type */}
               {errors.amount?.type === 'required' && (
                 <p>Your input is required</p>
               )}
@@ -133,27 +132,27 @@ function Calculator() {
                 <p>Please give a valid positive number</p>
               )}
             </div>
-
             <input type='submit' className='submit' />
           </div>
         )}
-
+        {/* Display the results to the user */}
         {results.isResult && (
           <div className='form-items'>
-            {results.initialData}
+            {results.userInitialData}
             <div>
               <label id='mylabel'>Monthly Payment:</label>
-              <input type='text' value={results.monthlyPayment} disabled />
+              <input type='text' value={results.monthlyPaymentUI} disabled />
             </div>
             <div>
               <label id='mylabel'>Total Payment: </label>
-              <input type='text' value={results.totalPayment} disabled />
+              <input type='text' value={results.totalPaymentUI} disabled />
             </div>
             <div>
               <label id='mylabel'>Total Interest:</label>
-              <input type='text' value={results.totalInterest} disabled />
+              <input type='text' value={results.totalInterestUI} disabled />
             </div>
 
+            {/* Button to clear the fields */}
             <input
               className='clear-field'
               value='Calculate again'
