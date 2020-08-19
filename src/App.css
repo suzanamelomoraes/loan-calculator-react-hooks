@@ -17,22 +17,21 @@ p {
 }
 
 h4 {
-    color:#555;
+  color: #555;
 }
 
 .calculator {
   display: flex;
-  align-items: center;
   justify-content: center;
 }
 
 .container {
-  background-color: white;
-  width: 50%;
-  border-radius: 4px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: white;
+  width: 50%;
+  border-radius: 4px;
   margin-top: 30px;
 }
 
@@ -54,6 +53,7 @@ h4 {
   color: white;
   border: none;
   margin: 10px 0;
+  padding: 5px;
   cursor: pointer;
 }
 
