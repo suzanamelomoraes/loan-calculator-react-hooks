@@ -87,9 +87,14 @@ function Calculator() {
                 })}
               />
               {/* Errors will return when field validation fails. If you have more than one validation type, specify the type */}
+              {/* {errors.amount && errors.amount.type === 'required' && (
+                <p>Your input is required</p>
+              )} */}
+              {/* Shortcut - Same meaning as above */}
               {errors.amount?.type === 'required' && (
                 <p>Your input is required</p>
               )}
+
               {errors.amount?.type === 'positive' && (
                 <p>Please give a valid positive number</p>
               )}
