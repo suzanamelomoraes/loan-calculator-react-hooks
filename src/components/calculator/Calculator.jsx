@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 function Calculator() {
-  const [valuesGivenByUser, setValues] = useState({
+  const [userValues, setUserValues] = useState({
     amount: '',
     interest: '',
     years: '',
@@ -12,15 +12,30 @@ function Calculator() {
       <div className='form-items'>
         <div>
           <label id='mylabel'>Amount:</label>
-          <input type='text' name='amount' placeholder='Loan amount' />
+          <input
+            type='text'
+            name='amount'
+            placeholder='Loan amount'
+            value={userValues.amount}
+          />
         </div>
         <div>
           <label id='mylabel'>Interest:</label>
-          <input type='text' name='interest' placeholder='Interest' />
+          <input
+            type='text'
+            name='interest'
+            placeholder='Interest'
+            value={userValues.interest}
+          />
         </div>
         <div>
           <label id='mylabel'>Years:</label>
-          <input type='text' name='years' placeholder='Years to repay' />
+          <input
+            type='text'
+            name='years'
+            placeholder='Years to repay'
+            value={userValues.years}
+          />
         </div>
       </div>
     </form>
