@@ -17,6 +17,9 @@ function Calculator() {
             name='amount'
             placeholder='Loan amount'
             value={userValues.amount}
+            onChange={(event) =>
+              setUserValues({ ...userValues, amount: event.target.value })
+            }
           />
         </div>
         <div>
@@ -26,6 +29,9 @@ function Calculator() {
             name='interest'
             placeholder='Interest'
             value={userValues.interest}
+            onChange={(event) =>
+              setUserValues({ ...userValues, interest: event.target.value })
+            }
           />
         </div>
         <div>
@@ -35,6 +41,9 @@ function Calculator() {
             name='years'
             placeholder='Years to repay'
             value={userValues.years}
+            onChange={(event) =>
+              setUserValues({ ...userValues, years: event.target.value })
+            }
           />
         </div>
       </div>
