@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
-function Calculator() {
+function CalculatorHookForm() {
   // Initialise the hook
   // Register your input into the hook by invoking the 'register' function
   // Handle-Submit will validate your input before invoking 'onSubmit'
@@ -37,7 +37,7 @@ function Calculator() {
         totalPayment = (monthly * calculatedPayments).toFixed(2),
         totalInterest = (monthly * calculatedPayments - userAmount).toFixed(2);
 
-      // Set up results to the state
+      // Set up results to the state to display to the user
       const newResults = { ...results };
       newResults.monthlyPaymentUI = monthlyPayment;
       newResults.totalPaymentUI = totalPayment;
@@ -171,4 +171,4 @@ function Calculator() {
   );
 }
 
-export default Calculator;
+export default CalculatorHookForm;
