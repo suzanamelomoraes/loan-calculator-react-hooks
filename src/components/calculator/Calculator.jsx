@@ -46,6 +46,7 @@ function Calculator() {
             }
           />
         </div>
+        <input type='submit' className='button' />
       </div>
     </form>
   );
