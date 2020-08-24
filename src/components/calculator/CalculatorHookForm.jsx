@@ -83,7 +83,7 @@ function CalculatorHookForm() {
                 ref={register({
                   required: true,
                   validate: {
-                    positive: (value) => parseFloat(value, 10) > 0,
+                    positive: (value) => parseFloat(value) > 0,
                   },
                 })}
               />
@@ -108,7 +108,7 @@ function CalculatorHookForm() {
                 ref={register({
                   required: true,
                   validate: {
-                    positive: (value) => parseFloat(value, 10) > 0,
+                    positive: (value) => parseFloat(value) > 0,
                   },
                 })}
               />
@@ -127,7 +127,7 @@ function CalculatorHookForm() {
                 ref={register({
                   required: true,
                   validate: {
-                    positive: (value) => parseInt(value, 10) > 0,
+                    positive: (value) => parseInt(value) > 0,
                   },
                 })}
               />
