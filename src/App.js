@@ -8,6 +8,7 @@ function App() {
     <div className='calculator'>
       <div className='container'>
         <h1>Loan Calculator</h1>
+        {/* <Calculator /> */}
         <CalculatorHookForm />
       </div>
     </div>
