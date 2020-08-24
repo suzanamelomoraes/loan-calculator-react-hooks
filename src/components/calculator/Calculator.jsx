@@ -50,65 +50,68 @@ function Calculator() {
 
   return (
     <form className='myform' onSubmit={handleSubmitValues}>
-      <div className='form-items'>
-        <div>
-          <label id='mylabel'>Amount:</label>
-          <input
-            type='text'
-            name='amount'
-            placeholder='Loan amount'
-            value={userValues.amount}
-            onChange={(event) =>
-              setUserValues({ ...userValues, amount: event.target.value })
-            }
-          />
+      {!results.isResult ? (
+        <div className='form-items'>
+          <div>
+            <label id='mylabel'>Amount:</label>
+            <input
+              type='text'
+              name='amount'
+              placeholder='Loan amount'
+              value={userValues.amount}
+              onChange={(event) =>
+                setUserValues({ ...userValues, amount: event.target.value })
+              }
+            />
+          </div>
+          <div>
+            <label id='mylabel'>Interest:</label>
+            <input
+              type='text'
+              name='interest'
+              placeholder='Interest'
+              value={userValues.interest}
+              onChange={(event) =>
+                setUserValues({ ...userValues, interest: event.target.value })
+              }
+            />
+          </div>
+          <div>
+            <label id='mylabel'>Years:</label>
+            <input
+              type='text'
+              name='years'
+              placeholder='Years to repay'
+              value={userValues.years}
+              onChange={(event) =>
+                setUserValues({ ...userValues, years: event.target.value })
+              }
+            />
+          </div>
+          <input type='submit' className='button' />
         </div>
-        <div>
-          <label id='mylabel'>Interest:</label>
-          <input
-            type='text'
-            name='interest'
-            placeholder='Interest'
-            value={userValues.interest}
-            onChange={(event) =>
-              setUserValues({ ...userValues, interest: event.target.value })
-            }
-          />
+      ) : (
+        //   Display the results to the user
+        <div className='form-items'>
+          <h4>
+            Loan amount: ${userValues.amount} <br /> Interest:
+            {userValues.interest}% <br /> Years to repay: {userValues.years}
+          </h4>
+          <div>
+            <label id='mylabel'>Monthly Payment:</label>
+            <input type='text' value={results.monthlyPaymentUI} disabled />
+          </div>
+          <div>
+            <label id='mylabel'>Total Payment: </label>
+            <input type='text' value={results.totalPaymentUI} disabled />
+          </div>
+          <div>
+            <label id='mylabel'>Total Interest:</label>
+            <input type='text' value={results.totalInterestUI} disabled />
+          </div>
         </div>
-        <div>
-          <label id='mylabel'>Years:</label>
-          <input
-            type='text'
-            name='years'
-            placeholder='Years to repay'
-            value={userValues.years}
-            onChange={(event) =>
-              setUserValues({ ...userValues, years: event.target.value })
-            }
-          />
-        </div>
-        <input type='submit' className='button' />
-      </div>
-
-      {/* Display the results to the user */}
-      <div className='form-items'>
-        <h4>
-          Loan amount: ${userValues.amount} <br /> Interest:
-          {userValues.interest}% <br /> Years to repay: {userValues.years}
-        </h4>
-        <div>
-          <label id='mylabel'>Monthly Payment:</label>
-          <input type='text' value={results.monthlyPaymentUI} disabled />
-        </div>
-        <div>
-          <label id='mylabel'>Total Payment: </label>
-          <input type='text' value={results.totalPaymentUI} disabled />
-        </div>
-        <div>
-          <label id='mylabel'>Total Interest:</label>
-          <input type='text' value={results.totalInterestUI} disabled />
-        </div>
-      </div>
+      )}
+      ;
     </form>
   );
 }
