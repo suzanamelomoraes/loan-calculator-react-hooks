@@ -45,7 +45,6 @@ function Calculator() {
       console.log('results after calculation', newResults);
       console.log('results after set the state', results);
     }
-
     return;
   };
 
@@ -89,6 +88,26 @@ function Calculator() {
           />
         </div>
         <input type='submit' className='button' />
+      </div>
+
+      {/* Display the results to the user */}
+      <div className='form-items'>
+        <h4>
+          Loan amount: ${userValues.amount} <br /> Interest:
+          {userValues.interest}% <br /> Years to repay: {userValues.years}
+        </h4>
+        <div>
+          <label id='mylabel'>Monthly Payment:</label>
+          <input type='text' value={results.monthlyPaymentUI} disabled />
+        </div>
+        <div>
+          <label id='mylabel'>Total Payment: </label>
+          <input type='text' value={results.totalPaymentUI} disabled />
+        </div>
+        <div>
+          <label id='mylabel'>Total Interest:</label>
+          <input type='text' value={results.totalInterestUI} disabled />
+        </div>
       </div>
     </form>
   );
