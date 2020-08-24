@@ -16,8 +16,10 @@ function Calculator() {
     isResult: false,
   });
 
+  // state to storage error message
   const [error, setError] = useState('');
 
+  // Manage validations and error messages
   const validate = () => {
     let actualError = '';
     // Validate if there are values
@@ -30,7 +32,7 @@ function Calculator() {
       isNaN(userValues.interest) ||
       isNaN(userValues.years)
     ) {
-      actualError = 'Please give a positive number';
+      actualError = 'All the values must be a valid number';
     }
     // Validade if the values are positive numbers
     if (
@@ -38,7 +40,7 @@ function Calculator() {
       parseFloat(userValues.interest) <= 0 ||
       parseFloat(userValues.years) <= 0
     ) {
-      actualError = 'Please give a positive number';
+      actualError = 'All the values must be a positive number';
     }
     if (actualError) {
       setError(actualError);
@@ -47,7 +49,7 @@ function Calculator() {
     return true;
   };
 
-  // Handle the data submited by the user by sending it to the calculateResults function
+  // Handle the data submited - validate inputs and send it as a parameter to the function that calculates the loan
   const handleSubmitValues = (e) => {
     e.preventDefault();
     const isValid = validate();
@@ -99,6 +101,7 @@ function Calculator() {
 
   return (
     <div>
+      {/* Display the error when it exists */}
       <p className='error'>{error}</p>
       <form className='myform' onSubmit={handleSubmitValues}>
         {/* ternary operator manages when the calculator and results will be displayed to the user */}
@@ -112,7 +115,7 @@ function Calculator() {
                 name='amount'
                 placeholder='Loan amount'
                 value={userValues.amount}
-                //   onChange sets the values given by the user as input to the userValues state
+                // onChange method sets the values given by the user as input to the userValues state
                 onChange={(event) =>
                   setUserValues({ ...userValues, amount: event.target.value })
                 }
