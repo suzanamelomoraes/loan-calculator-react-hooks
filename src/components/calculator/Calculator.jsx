@@ -1,14 +1,29 @@
 import React, { useState } from 'react';
 
 function Calculator() {
+  // state to storage the values given by the user when filling the input fields
   const [userValues, setUserValues] = useState({
     amount: '',
     interest: '',
     years: '',
   });
 
+  // state to storage the results of the calculation
+  const [results, setResults] = useState({
+    monthlyPaymentUI: '',
+    totalPaymentUI: '',
+    totalInterestUI: '',
+    isResult: false,
+    userInitialData: '',
+  });
+
+  const handleSubmitValues = (e) => {
+    e.preventDefault();
+    console.log(userValues);
+  };
+
   return (
-    <form className='myform'>
+    <form className='myform' onSubmit={handleSubmitValues}>
       <div className='form-items'>
         <div>
           <label id='mylabel'>Amount:</label>
