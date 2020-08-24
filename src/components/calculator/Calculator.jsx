@@ -48,6 +48,22 @@ function Calculator() {
     return;
   };
 
+  // Clear input fields
+  const clearFields = () => {
+    const clearUserValues = { ...userValues };
+    clearUserValues.amount = '';
+    clearUserValues.interest = '';
+    clearUserValues.years = '';
+    setUserValues(clearUserValues);
+
+    const newResults = { ...results };
+    newResults.monthlyPaymentUI = '';
+    newResults.totalPaymentUI = '';
+    newResults.totalInterestUI = '';
+    newResults.isResult = false;
+    setResults(newResults);
+  };
+
   return (
     <form className='myform' onSubmit={handleSubmitValues}>
       {!results.isResult ? (
@@ -109,9 +125,14 @@ function Calculator() {
             <label id='mylabel'>Total Interest:</label>
             <input type='text' value={results.totalInterestUI} disabled />
           </div>
+          <input
+            className='button'
+            value='Calculate again'
+            type='button'
+            onClick={() => clearFields()}
+          />
         </div>
       )}
-      ;
     </form>
   );
 }
