@@ -14,12 +14,39 @@ function Calculator() {
     totalPaymentUI: '',
     totalInterestUI: '',
     isResult: false,
-    userInitialData: '',
   });
 
   const handleSubmitValues = (e) => {
     e.preventDefault();
-    console.log(userValues);
+    console.log('user values', userValues);
+    calculateResults(userValues);
+  };
+
+  // Calculation
+  const calculateResults = ({ amount, interest, years }) => {
+    const userAmount = parseFloat(amount),
+      calculatedInterest = parseFloat(interest) / 100 / 12,
+      calculatedPayments = parseFloat(years) * 12,
+      x = Math.pow(1 + calculatedInterest, calculatedPayments),
+      monthly = (userAmount * x * calculatedInterest) / (x - 1);
+
+    if (isFinite(monthly)) {
+      const monthlyPayment = monthly.toFixed(2),
+        totalPayment = (monthly * calculatedPayments).toFixed(2),
+        totalInterest = (monthly * calculatedPayments - userAmount).toFixed(2);
+
+      // Set up results to the state to display them to the user
+      const newResults = { ...results };
+      newResults.monthlyPaymentUI = monthlyPayment;
+      newResults.totalPaymentUI = totalPayment;
+      newResults.totalInterestUI = totalInterest;
+      newResults.isResult = true;
+      setResults(newResults);
+      console.log('results after calculation', newResults);
+      console.log('results after set the state', results);
+    }
+
+    return;
   };
 
   return (
