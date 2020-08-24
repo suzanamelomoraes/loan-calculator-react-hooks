@@ -12,7 +12,8 @@ Please, feel free to contribute with comments, issues or pull requests.
 
 ### Technologies:
 
-- React (Hooks) + React Hook-form library
+- React (Hooks) (`Calculator.jsx`)
+- React Hooks + Hook-form library (`CalculatorHookForm.jsx`)
 - CSS
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
