@@ -18,7 +18,7 @@ function CalculatorHookForm() {
     userInitialData: '',
   });
 
-  // Hook-form registered fields returns a object with key(name): value
+  // Hook-form registered fields returns a object with key(name): value, which is sent to the calculateResults
   const onSubmit = (data, e) => {
     calculateResults(data);
     e.target.reset();
@@ -37,7 +37,7 @@ function CalculatorHookForm() {
         totalPayment = (monthly * calculatedPayments).toFixed(2),
         totalInterest = (monthly * calculatedPayments - userAmount).toFixed(2);
 
-      // Set up results to the state to display to the user
+      // Set up results to the state to be displayed to the user
       const newResults = { ...results };
       newResults.monthlyPaymentUI = monthlyPayment;
       newResults.totalPaymentUI = totalPayment;
@@ -71,6 +71,7 @@ function CalculatorHookForm() {
   return (
     <div>
       <form className='myform' onSubmit={handleSubmit(onSubmit)}>
+        {/* Form to collect data from the user */}
         {!results.isResult && (
           <div className='form-items'>
             <div>
@@ -140,7 +141,7 @@ function CalculatorHookForm() {
             <input type='submit' className='button' />
           </div>
         )}
-        {/* Display the results to the user */}
+        {/* Form to display the results to the user */}
         {results.isResult && (
           <div className='form-items'>
             {results.userInitialData}
