@@ -61,16 +61,18 @@ function Calculator() {
 
   // Calculation
   const calculateResults = ({ amount, interest, years }) => {
-    const userAmount = parseFloat(amount),
-      calculatedInterest = parseFloat(interest) / 100 / 12,
-      calculatedPayments = parseFloat(years) * 12,
-      x = Math.pow(1 + calculatedInterest, calculatedPayments),
-      monthly = (userAmount * x * calculatedInterest) / (x - 1);
+    const userAmount = parseFloat(amount);
+    const calculatedInterest = parseFloat(interest) / 100 / 12;
+    const calculatedPayments = parseFloat(years) * 12;
+    const x = Math.pow(1 + calculatedInterest, calculatedPayments);
+    const monthly = (userAmount * x * calculatedInterest) / (x - 1);
 
     if (isFinite(monthly)) {
-      const monthlyPayment = monthly.toFixed(2),
-        totalPayment = (monthly * calculatedPayments).toFixed(2),
-        totalInterest = (monthly * calculatedPayments - userAmount).toFixed(2);
+      const monthlyPayment = monthly.toFixed(2);
+      const totalPayment = (monthly * calculatedPayments).toFixed(2);
+      const totalInterest = (monthly * calculatedPayments - userAmount).toFixed(
+        2
+      );
 
       // Set up results to the state to be displayed to the user
       const newResults = { ...results };
