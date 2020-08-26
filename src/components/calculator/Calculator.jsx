@@ -102,82 +102,88 @@ function Calculator() {
   };
 
   return (
-    <div>
-      {/* Display the error when it exists */}
-      <p className='error'>{error}</p>
-      <form className='myform' onSubmit={handleSubmitValues}>
-        {/* ternary operator manages when the calculator and results will be displayed to the user */}
-        {!results.isResult ? (
-          //   Form to collect data from the user
-          <div className='form-items'>
-            <div>
-              <label id='mylabel'>Amount:</label>
+    <div className='calculator'>
+      <div className='myform'>
+        <h1>Loan Calculator</h1>
+        {/* Display the error when it exists */}
+        <p className='error'>{error}</p>
+        <form onSubmit={handleSubmitValues}>
+          {/* ternary operator manages when the calculator and results will be displayed to the user */}
+          {!results.isResult ? (
+            //   Form to collect data from the user
+            <div className='form-items'>
+              <div>
+                <label id='mylabel'>Amount:</label>
+                <input
+                  type='text'
+                  name='amount'
+                  placeholder='Loan amount'
+                  value={userValues.amount}
+                  // onChange method sets the values given by the user as input to the userValues state
+                  onChange={(event) =>
+                    setUserValues({ ...userValues, amount: event.target.value })
+                  }
+                />
+              </div>
+              <div>
+                <label id='mylabel'>Interest:</label>
+                <input
+                  type='text'
+                  name='interest'
+                  placeholder='Interest'
+                  value={userValues.interest}
+                  onChange={(event) =>
+                    setUserValues({
+                      ...userValues,
+                      interest: event.target.value,
+                    })
+                  }
+                />
+              </div>
+              <div>
+                <label id='mylabel'>Years:</label>
+                <input
+                  type='text'
+                  name='years'
+                  placeholder='Years to repay'
+                  value={userValues.years}
+                  onChange={(event) =>
+                    setUserValues({ ...userValues, years: event.target.value })
+                  }
+                />
+              </div>
+              <input type='submit' className='button' />
+            </div>
+          ) : (
+            //   Form to display the results to the user
+            <div className='form-items'>
+              <h4>
+                Loan amount: ${userValues.amount} <br /> Interest:{' '}
+                {userValues.interest}% <br /> Years to repay: {userValues.years}
+              </h4>
+              <div>
+                <label id='mylabel'>Monthly Payment:</label>
+                <input type='text' value={results.monthlyPaymentUI} disabled />
+              </div>
+              <div>
+                <label id='mylabel'>Total Payment: </label>
+                <input type='text' value={results.totalPaymentUI} disabled />
+              </div>
+              <div>
+                <label id='mylabel'>Total Interest:</label>
+                <input type='text' value={results.totalInterestUI} disabled />
+              </div>
+              {/* Button to clear fields */}
               <input
-                type='text'
-                name='amount'
-                placeholder='Loan amount'
-                value={userValues.amount}
-                // onChange method sets the values given by the user as input to the userValues state
-                onChange={(event) =>
-                  setUserValues({ ...userValues, amount: event.target.value })
-                }
+                className='button'
+                value='Calculate again'
+                type='button'
+                onClick={() => clearFields()}
               />
             </div>
-            <div>
-              <label id='mylabel'>Interest:</label>
-              <input
-                type='text'
-                name='interest'
-                placeholder='Interest'
-                value={userValues.interest}
-                onChange={(event) =>
-                  setUserValues({ ...userValues, interest: event.target.value })
-                }
-              />
-            </div>
-            <div>
-              <label id='mylabel'>Years:</label>
-              <input
-                type='text'
-                name='years'
-                placeholder='Years to repay'
-                value={userValues.years}
-                onChange={(event) =>
-                  setUserValues({ ...userValues, years: event.target.value })
-                }
-              />
-            </div>
-            <input type='submit' className='button' />
-          </div>
-        ) : (
-          //   Form to display the results to the user
-          <div className='form-items'>
-            <h4>
-              Loan amount: ${userValues.amount} <br /> Interest:{' '}
-              {userValues.interest}% <br /> Years to repay: {userValues.years}
-            </h4>
-            <div>
-              <label id='mylabel'>Monthly Payment:</label>
-              <input type='text' value={results.monthlyPaymentUI} disabled />
-            </div>
-            <div>
-              <label id='mylabel'>Total Payment: </label>
-              <input type='text' value={results.totalPaymentUI} disabled />
-            </div>
-            <div>
-              <label id='mylabel'>Total Interest:</label>
-              <input type='text' value={results.totalInterestUI} disabled />
-            </div>
-            {/* Button to clear fields */}
-            <input
-              className='button'
-              value='Calculate again'
-              type='button'
-              onClick={() => clearFields()}
-            />
-          </div>
-        )}
-      </form>
+          )}
+        </form>
+      </div>
     </div>
   );
 }
