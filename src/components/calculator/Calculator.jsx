@@ -19,6 +19,17 @@ function Calculator() {
   // state to storage error message
   const [error, setError] = useState('');
 
+  // event handler to update state when the user enters values
+
+  const handleAmountInputChange = (event) =>
+    setUserValues({ ...userValues, amount: event.target.value });
+
+  const handleInterestInputChange = (event) =>
+    setUserValues({ ...userValues, interest: event.target.value });
+
+  const handleYearsInputChange = (event) =>
+    setUserValues({ ...userValues, years: event.target.value });
+
   // Manage validations and error messages
   const validate = () => {
     let actualError = '';
@@ -120,9 +131,7 @@ function Calculator() {
                   placeholder='Loan amount'
                   value={userValues.amount}
                   // onChange method sets the values given by the user as input to the userValues state
-                  onChange={(event) =>
-                    setUserValues({ ...userValues, amount: event.target.value })
-                  }
+                  onChange={handleAmountInputChange}
                 />
               </div>
               <div>
@@ -132,12 +141,7 @@ function Calculator() {
                   name='interest'
                   placeholder='Interest'
                   value={userValues.interest}
-                  onChange={(event) =>
-                    setUserValues({
-                      ...userValues,
-                      interest: event.target.value,
-                    })
-                  }
+                  onChange={handleInterestInputChange}
                 />
               </div>
               <div>
@@ -147,9 +151,7 @@ function Calculator() {
                   name='years'
                   placeholder='Years to repay'
                   value={userValues.years}
-                  onChange={(event) =>
-                    setUserValues({ ...userValues, years: event.target.value })
-                  }
+                  onChange={handleYearsInputChange}
                 />
               </div>
               <input type='submit' className='button' />
