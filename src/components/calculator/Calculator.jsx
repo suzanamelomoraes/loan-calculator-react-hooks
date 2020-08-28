@@ -21,14 +21,18 @@ function Calculator() {
 
   // event handler to update state when the user enters values
 
-  const handleAmountInputChange = (event) =>
-    setUserValues({ ...userValues, amount: event.target.value });
+  const handleInputChange = (event) =>
+    setUserValues({ ...userValues, [event.target.name]: event.target.value });
 
-  const handleInterestInputChange = (event) =>
-    setUserValues({ ...userValues, interest: event.target.value });
+  // Optionally:
+  //   const handleAmountInputChange = (event) =>
+  //     setUserValues({ ...userValues, amount: event.target.value });
 
-  const handleYearsInputChange = (event) =>
-    setUserValues({ ...userValues, years: event.target.value });
+  //   const handleInterestInputChange = (event) =>
+  //     setUserValues({ ...userValues, interest: event.target.value });
+
+  //   const handleYearsInputChange = (event) =>
+  //     setUserValues({ ...userValues, years: event.target.value });
 
   // Manage validations and error messages
   const validate = () => {
@@ -131,7 +135,7 @@ function Calculator() {
                   placeholder='Loan amount'
                   value={userValues.amount}
                   // onChange method sets the values given by the user as input to the userValues state
-                  onChange={handleAmountInputChange}
+                  onChange={handleInputChange}
                 />
               </div>
               <div>
@@ -141,7 +145,7 @@ function Calculator() {
                   name='interest'
                   placeholder='Interest'
                   value={userValues.interest}
-                  onChange={handleInterestInputChange}
+                  onChange={handleInputChange}
                 />
               </div>
               <div>
@@ -151,7 +155,7 @@ function Calculator() {
                   name='years'
                   placeholder='Years to repay'
                   value={userValues.years}
-                  onChange={handleYearsInputChange}
+                  onChange={handleInputChange}
                 />
               </div>
               <input type='submit' className='button' />
