@@ -10,9 +10,9 @@ function Calculator() {
 
   // state to storage the results of the calculation
   const [results, setResults] = useState({
-    monthlyPaymentUI: '',
-    totalPaymentUI: '',
-    totalInterestUI: '',
+    monthlyPayment: '',
+    totalPayment: '',
+    totalInterest: '',
     isResult: false,
   });
 
@@ -24,7 +24,8 @@ function Calculator() {
   const handleInputChange = (event) =>
     setUserValues({ ...userValues, [event.target.name]: event.target.value });
 
-  // Optionally:
+  // Note: 
+  // You can optionally write:
   //   const handleAmountInputChange = (event) =>
   //     setUserValues({ ...userValues, amount: event.target.value });
 
@@ -79,19 +80,20 @@ function Calculator() {
     const monthly = (userAmount * x * calculatedInterest) / (x - 1);
 
     if (isFinite(monthly)) {
-      const monthlyPayment = monthly.toFixed(2);
-      const totalPayment = (monthly * calculatedPayments).toFixed(2);
-      const totalInterest = (monthly * calculatedPayments - userAmount).toFixed(
-        2
-      );
+      const monthlyPaymentCalculated = monthly.toFixed(2);
+      const totalPaymentCalculated = (monthly * calculatedPayments).toFixed(2);
+      const totalInterestCalculated = (
+        monthly * calculatedPayments -
+        userAmount
+      ).toFixed(2);
 
       // Set up results to the state to be displayed to the user
-      const newResults = { ...results };
-      newResults.monthlyPaymentUI = monthlyPayment;
-      newResults.totalPaymentUI = totalPayment;
-      newResults.totalInterestUI = totalInterest;
-      newResults.isResult = true;
-      setResults(newResults);
+      setResults({
+        monthlyPayment: monthlyPaymentCalculated,
+        totalPayment: totalPaymentCalculated,
+        totalInterest: totalInterestCalculated,
+        isResult: true,
+      });
     }
     return;
   };
@@ -105,9 +107,9 @@ function Calculator() {
     });
 
     setResults({
-      monthlyPaymentUI: '',
-      totalPaymentUI: '',
-      totalInterestUI: '',
+      monthlyPayment: '',
+      totalPayment: '',
+      totalInterest: '',
       isResult: false,
     });
   };
@@ -165,15 +167,15 @@ function Calculator() {
               </h4>
               <div>
                 <label id='label'>Monthly Payment:</label>
-                <input type='text' value={results.monthlyPaymentUI} disabled />
+                <input type='text' value={results.monthlyPayment} disabled />
               </div>
               <div>
                 <label id='label'>Total Payment: </label>
-                <input type='text' value={results.totalPaymentUI} disabled />
+                <input type='text' value={results.totalPayment} disabled />
               </div>
               <div>
                 <label id='label'>Total Interest:</label>
-                <input type='text' value={results.totalInterestUI} disabled />
+                <input type='text' value={results.totalInterest} disabled />
               </div>
               {/* Button to clear fields */}
               <input
