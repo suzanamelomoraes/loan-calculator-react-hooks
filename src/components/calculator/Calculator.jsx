@@ -36,24 +36,21 @@ function Calculator() {
 
   // Manage validations and error messages
   const validate = () => {
+    const { amount, interest, years } = userValues;
     let actualError = '';
     // Validate if there are values
-    if (!userValues.amount || !userValues.interest || !userValues.years) {
+    if (!amount || !interest || !years) {
       actualError = 'All the values are required';
     }
     // Validade if the values are numbers
-    if (
-      isNaN(userValues.amount) ||
-      isNaN(userValues.interest) ||
-      isNaN(userValues.years)
-    ) {
+    if (isNaN(amount) || isNaN(interest) || isNaN(years)) {
       actualError = 'All the values must be a valid number';
     }
     // Validade if the values are positive numbers
     if (
-      parseFloat(userValues.amount) <= 0 ||
-      parseFloat(userValues.interest) <= 0 ||
-      parseFloat(userValues.years) <= 0
+      parseFloat(amount) <= 0 ||
+      parseFloat(interest) <= 0 ||
+      parseFloat(years) <= 0
     ) {
       actualError = 'All the values must be a positive number';
     }
