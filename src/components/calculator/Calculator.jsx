@@ -118,7 +118,7 @@ function Calculator() {
 
   return (
     <div className='calculator'>
-      <div className='myform'>
+      <div className='form'>
         <h1>Loan Calculator</h1>
         {/* Display the error when it exists */}
         <p className='error'>{error}</p>
@@ -128,7 +128,7 @@ function Calculator() {
             //   Form to collect data from the user
             <div className='form-items'>
               <div>
-                <label id='mylabel'>Amount:</label>
+                <label id='label'>Amount:</label>
                 <input
                   type='text'
                   name='amount'
@@ -139,7 +139,7 @@ function Calculator() {
                 />
               </div>
               <div>
-                <label id='mylabel'>Interest:</label>
+                <label id='label'>Interest:</label>
                 <input
                   type='text'
                   name='interest'
@@ -149,7 +149,7 @@ function Calculator() {
                 />
               </div>
               <div>
-                <label id='mylabel'>Years:</label>
+                <label id='label'>Years:</label>
                 <input
                   type='text'
                   name='years'
@@ -168,15 +168,15 @@ function Calculator() {
                 {userValues.interest}% <br /> Years to repay: {userValues.years}
               </h4>
               <div>
-                <label id='mylabel'>Monthly Payment:</label>
+                <label id='label'>Monthly Payment:</label>
                 <input type='text' value={results.monthlyPaymentUI} disabled />
               </div>
               <div>
-                <label id='mylabel'>Total Payment: </label>
+                <label id='label'>Total Payment: </label>
                 <input type='text' value={results.totalPaymentUI} disabled />
               </div>
               <div>
-                <label id='mylabel'>Total Interest:</label>
+                <label id='label'>Total Interest:</label>
                 <input type='text' value={results.totalInterestUI} disabled />
               </div>
               {/* Button to clear fields */}
