@@ -35,7 +35,7 @@ function Calculator() {
   //     setUserValues({ ...userValues, years: event.target.value });
 
   // Manage validations and error messages
-  const validate = () => {
+  const isValid = () => {
     const { amount, interest, years } = userValues;
     let actualError = '';
     // Validate if there are values
@@ -64,8 +64,7 @@ function Calculator() {
   // Handle the data submited - validate inputs and send it as a parameter to the function that calculates the loan
   const handleSubmitValues = (e) => {
     e.preventDefault();
-    const isValid = validate();
-    if (isValid) {
+        if (isValid()) {
       setError('');
       calculateResults(userValues);
     }
