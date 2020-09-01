@@ -64,7 +64,7 @@ function Calculator() {
   // Handle the data submited - validate inputs and send it as a parameter to the function that calculates the loan
   const handleSubmitValues = (e) => {
     e.preventDefault();
-        if (isValid()) {
+    if (isValid()) {
       setError('');
       calculateResults(userValues);
     }
@@ -98,18 +98,18 @@ function Calculator() {
 
   // Clear input fields
   const clearFields = () => {
-    const clearUserValues = { ...userValues };
-    clearUserValues.amount = '';
-    clearUserValues.interest = '';
-    clearUserValues.years = '';
-    setUserValues(clearUserValues);
+    setUserValues({
+      amount: '',
+      interest: '',
+      years: '',
+    });
 
-    const newResults = { ...results };
-    newResults.monthlyPaymentUI = '';
-    newResults.totalPaymentUI = '';
-    newResults.totalInterestUI = '';
-    newResults.isResult = false;
-    setResults(newResults);
+    setResults({
+      monthlyPaymentUI: '',
+      totalPaymentUI: '',
+      totalInterestUI: '',
+      isResult: false,
+    });
   };
 
   return (
@@ -180,7 +180,7 @@ function Calculator() {
                 className='button'
                 value='Calculate again'
                 type='button'
-                onClick={() => clearFields()}
+                onClick={clearFields}
               />
             </div>
           )}
