@@ -24,7 +24,7 @@ function Calculator() {
   const handleInputChange = (event) =>
     setUserValues({ ...userValues, [event.target.name]: event.target.value });
 
-  // Note: 
+  // Note:
   // You can optionally write:
   //   const handleAmountInputChange = (event) =>
   //     setUserValues({ ...userValues, amount: event.target.value });
