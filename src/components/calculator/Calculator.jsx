@@ -48,11 +48,7 @@ function Calculator() {
       actualError = 'All the values must be a valid number';
     }
     // Validade if the values are positive numbers
-    if (
-      parseFloat(amount) <= 0 ||
-      parseFloat(interest) <= 0 ||
-      parseFloat(years) <= 0
-    ) {
+    if (Number(amount) <= 0 || Number(interest) <= 0 || Number(years) <= 0) {
       actualError = 'All the values must be a positive number';
     }
     if (actualError) {
@@ -73,9 +69,9 @@ function Calculator() {
 
   // Calculation
   const calculateResults = ({ amount, interest, years }) => {
-    const userAmount = parseFloat(amount);
-    const calculatedInterest = parseFloat(interest) / 100 / 12;
-    const calculatedPayments = parseFloat(years) * 12;
+    const userAmount = Number(amount);
+    const calculatedInterest = Number(interest) / 100 / 12;
+    const calculatedPayments = Number(years) * 12;
     const x = Math.pow(1 + calculatedInterest, calculatedPayments);
     const monthly = (userAmount * x * calculatedInterest) / (x - 1);
 
